@@ -21,7 +21,7 @@
 
 При попытке деления на ноль генерируется исключение `ArithmeticException("division by zero !")`.
 
-# Tests
+# RationalTests
 Класс с примером теста на класс `Rational`. 
 
 Пример теста (`void testStandardConstructor()`), проверяет значения числителя и знаменателя стандартного экземпляра класса.

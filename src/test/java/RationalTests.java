@@ -14,32 +14,43 @@ public class RationalTests {
     @Test
     public void testAlternativeConstructor() {
         Rational rational = new Rational(1, 2);
-        assertEquals("Nominator is not 1", rational.getNumerator(), 1);
-        assertEquals("Denominator is not 2", rational.getDenominator(), 2);
+        assertEquals("Nominator is not 1", 1, rational.getNumerator());
+        assertEquals("Denominator is not 2", 2, rational.getDenominator());
     }
 
+ //   @Test
+    //  public void testAlternativeConstructorException() {
+//        try {
+//            Rational rational = new Rational(1, 0);
+ //           fail("Exception wasn't raise");
+ //       } catch (ArithmeticException exception) {
+ //           assertEquals(exception.getMessage(), "division by zero !");
+//        }
+//    }
+
+    @Rule
+    public ExpectedException thrown =ExpectedException.none();
+
     @Test
-    public void testAlternativeConstructorException() {
-        try {
-            Rational rational = new Rational(1, 0);
-            fail("Exception wasn't raise");
-        } catch (ArithmeticException exception) {
-            assertEquals(exception.getMessage(), "division by zero !");
-        }
+    public void testArithmeticException() {
+        thrown.expect(ArithmeticException.class);
+        thrown.expectMessage("division by zero !");
+        Rational rational = new Rational(1,0);
     }
+
 
     @Test
     public void testAlternativeConstructorReduce() {
         Rational rational = new Rational(2, 4);
-        assertEquals("", rational.getNumerator(), 1);
-        assertEquals("", rational.getDenominator(), 2);
+        assertEquals("", 1, rational.getNumerator());
+        assertEquals("", 2, rational.getDenominator());
     }
 
     @Test
     public void testSetNumerator() {
         Rational rational = new Rational(1, 3);
         rational.setNumerator(2);
-        assertEquals("", rational.getNumerator(), 2);
+        assertEquals("", 2, rational.getNumerator());
     }
 
 
@@ -47,15 +58,15 @@ public class RationalTests {
     public void testSetDenominator() {
         Rational rational = new Rational(1, 3);
         rational.setDenominator(2);
-        assertEquals("", rational.getDenominator(), 2);
+        assertEquals("", 2, rational.getDenominator());
     }
 
     @Test
     public void testSetNumeratorReduce() {
         Rational rational = new Rational(1, 4);
         rational.setNumerator(2);
-        assertEquals("", rational.getNumerator(), 1);
-        assertEquals("", rational.getDenominator(), 2);
+        assertEquals("", 1,  rational.getNumerator());
+        assertEquals("", 2, rational.getDenominator());
 
     }
 
@@ -63,7 +74,35 @@ public class RationalTests {
     public void testSetDenominatorReduce() {
         Rational rational = new Rational(2, 1);
         rational.setDenominator(2);
-        assertEquals("", rational.getNumerator(), 1);
-        assertEquals("", rational.getDenominator(), 1);
+        assertEquals("", 1, rational.getNumerator());
+        assertEquals("", 1, rational.getDenominator());
+    }
+
+    @Test
+    public void testString(){
+        Rational rational= new Rational(1,3);
+        assertEquals("1/3", rational.toString());
+    }
+
+    @Test
+    public void testEqualesNull(){
+        Rational rational = new Rational(1,2);
+        assertFalse(rational.equals(null));
+
+    }
+
+    @Test
+    public void testEqualesObjGetClass(){
+        Rational rational = new Rational(1,2);
+        assertFalse(rational.equals(""));
+
+    }
+    @Test
+    public void testEqualesEqualityObjects(){
+        Rational rational1 = new Rational(1,2);
+        Rational rational2 = new Rational(1,2);
+
+        assertTrue(rational1.equals(rational2));
+
     }
 }

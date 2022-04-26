@@ -129,5 +129,69 @@ public class RationalTests {
 
         assertTrue(rational1.less(rational2));
     }
+    @Test
+    public void testLessDenominatorNumeratorEqual(){
+        Rational rational1 = new Rational(1,3);
+        Rational rational2 = new Rational(1,3);
 
+        assertFalse(rational1.less(rational2));
+    }
+    @Test
+    public void testLessOrEqual(){
+        Rational rational1 = new Rational(1,3);
+        Rational rational2 = new Rational(1,2);
+
+        assertTrue(rational1.lessOrEqual(rational2));
+
+    }
+    @Test
+    public void testLessOrEqual2(){
+        Rational rational1 = new Rational(1,3);
+        Rational rational2 = new Rational(1,3);
+
+        assertTrue(rational1.lessOrEqual(rational2));
+    }
+
+    @Test
+    public void testPlusDifferentDenominators(){
+        Rational rational1= new Rational(1,2);
+        Rational rational2= new Rational(1,3);
+        Rational expectedResult = new Rational(5, 6);
+
+        assertEquals("", expectedResult, rational1.plus(rational2));
+    }
+
+    @Test
+    public void testMultiply(){
+        Rational rational1= new Rational(1,2);
+        Rational rational2= new Rational(3,5);
+        Rational expectedResult = new Rational(3, 10);
+
+        assertEquals("", expectedResult, rational1.multiply(rational2));
+    }
+
+    @Test
+    public void testMultiplyByZero(){
+        Rational rational1= new Rational(1,2);
+        Rational rational2= new Rational(0,5);
+        Rational expectedResult = new Rational(0, 10);
+
+        assertEquals("", expectedResult, rational1.multiply(rational2));
+    }
+    @Test
+    public void testMinus(){
+        Rational rational1= new Rational(2,3);
+        Rational rational2= new Rational(1,5);
+        Rational expectedResult = new Rational(7, 15);
+
+        assertEquals("", expectedResult, rational1.minus(rational2));
+    }
+    @Test
+    public void testMinusNegative(){
+        Rational rational1= new Rational(1,4);
+        Rational rational2= new Rational(2,3);
+        Rational expectedResult = new Rational(-5, 12);
+
+        assertEquals("", expectedResult, rational1.minus(rational2));
+    }
 }

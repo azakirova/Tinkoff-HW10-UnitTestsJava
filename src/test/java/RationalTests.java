@@ -18,14 +18,14 @@ public class RationalTests {
         assertEquals("Denominator is not 2", 2, rational.getDenominator());
     }
 
- //   @Test
-    //  public void testAlternativeConstructorException() {
+//    @Test
+//    public void testAlternativeConstructorException() {
 //        try {
 //            Rational rational = new Rational(1, 0);
- //           fail("Exception wasn't raise");
- //       } catch (ArithmeticException exception) {
- //           assertEquals(exception.getMessage(), "division by zero !");
-//        }
+//            fail("Exception wasn't raise");
+//       } catch (ArithmeticException exception) {
+//         assertEquals(exception.getMessage(), "division by zero !");
+//       }
 //    }
 
     @Rule
@@ -105,4 +105,29 @@ public class RationalTests {
         assertTrue(rational1.equals(rational2));
 
     }
+
+    @Test
+    public void testLessDenominatorsEqual(){
+        Rational rational1 = new Rational(1,3);
+        Rational rational2 = new Rational(2,3);
+
+        assertTrue(rational1.less(rational2));
+    }
+
+    @Test
+    public void testLessNumeratorEqual(){
+        Rational rational1 = new Rational(2,5);
+        Rational rational2 = new Rational(2,3);
+
+        assertTrue(rational1.less(rational2));
+    }
+
+    @Test
+    public void testLessDenominatorNumeratorNotEqual(){
+        Rational rational1 = new Rational(1,10);
+        Rational rational2 = new Rational(997,1003);
+
+        assertTrue(rational1.less(rational2));
+    }
+
 }
